@@ -1,0 +1,51 @@
+.mainDiv {
+  background-color: var(--main-purple);
+  background-image: linear-gradient(
+    62deg,
+    var(--main-purple) 50%,
+    var(--secondary-purple) 100%
+  );
+  width: 600px;
+  height: 250px;
+  margin: 20px;
+  border-radius: 65px 25px; /* Create an unusual shape where to contain the quote */
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Apply a transition to the box-shadow and transform for a smoother experience */
+}
+
+.mainDiv:hover {
+  box-shadow: 0 15px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(
+    -15px
+  ); /* Move the div up by 15 pixels for a cool hover effect */
+}
+
+.title {
+  margin-top: 60px;
+  font-size: 1.5em;
+}
+
+.content {
+  margin-top: 30px;
+  padding: 0 40px;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  /* Minor adjustments for smaller screens */
+  .mainDiv {
+    width: 450px;
+    height: 225px;
+  }
+
+  .title {
+    padding-top: 20px;
+    font-size: 1.25em;
+  }
+
+  .content {
+    padding: 0 40px;
+    font-size: 0.9em;
+  }
+}

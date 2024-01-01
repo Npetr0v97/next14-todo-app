@@ -1,0 +1,81 @@
+.mainDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.secondaryDiv {
+  margin-left: 20px;
+  margin-top: 6px;
+  min-width: 75%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.content {
+  font-size: 1rem;
+  padding: 2px;
+  transition: 1 ease;
+}
+.contentBlur {
+  opacity: 0.8;
+}
+
+.input {
+  font-size: 1rem;
+  width: 100%;
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s ease-in-out; /* Add ease-in-out transition for border-color */
+  outline: none;
+}
+
+/* Styling an hr element so that it appears as an animated strikethrough from left to right */
+.strikethrough {
+  content: "";
+  position: absolute;
+  transform: translate(60px, 5px);
+  width: 0;
+  border-color: transparent;
+  transition: width 0.5s ease-in-out;
+}
+
+.strWidth {
+  border-color: var(--secondary-purple);
+  max-width: 70%;
+  width: 640px;
+  height: 2px;
+}
+
+.input:focus {
+  box-shadow: 0 2px var(--primary);
+}
+
+.checkbox {
+  margin-right: 8px;
+
+  border: 2px solid #555;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background-color: #555;
+  border-color: #555;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-left: auto;
+}

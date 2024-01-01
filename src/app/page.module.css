@@ -1,0 +1,9 @@
+.main {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

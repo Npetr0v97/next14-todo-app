@@ -1,0 +1,63 @@
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin: 30px;
+}
+
+.form__field {
+  width: 888px;
+  border: 0;
+  border-bottom: 2px solid var(--main-purple);
+  outline: 0;
+  font-size: 1rem;
+  color: white;
+  padding: 7px 0;
+  padding-bottom: 2px;
+  background: transparent;
+
+  transition: border-color 0.2s;
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.5rem;
+    cursor: text;
+    top: 10px;
+  }
+}
+
+/* This styles the label so thast when the form filed is focused, the "placeholder" text goes above the input field */
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+
+  color: white;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    transform: translateY(-5px);
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--pale-green);
+    font-weight: 700;
+  }
+
+  font-weight: 700;
+
+  border-image: linear-gradient(to right, var(--primary), var(--pale-green));
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}

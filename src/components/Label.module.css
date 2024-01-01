@@ -1,0 +1,16 @@
+.label {
+  max-width: 25%;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  margin-top: 5px;
+  background-color: rgba(17, 153, 142, 0.4);
+  border-radius: 8px; /* Rounded edges */
+  padding: 8px 20px 12px 20px;
+  opacity: 0;
+  cursor: context-menu;
+}
+
+.labelShown {
+  transition: 1s ease;
+  opacity: 1;
+}

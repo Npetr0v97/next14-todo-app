@@ -1,0 +1,9 @@
+.wrapper {
+  /* Center the content (divs) */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+
+  align-items: center;
+}
