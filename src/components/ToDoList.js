@@ -41,9 +41,9 @@ export function ToDoList() {
         const response = await fetch("/api/todos");
         const data = await response.json();
         console.log(data);
-        if (response.statusText !== "OK") {
-          throw new Error("Failed to fetch Todos");
-        }
+        // if (response.statusText !== "OK") {
+        //   throw new Error("Failed to fetch Todos");
+        // }
         // const todos = response.data.todos;
         const todos = data.todos;
         // Set the state so the list can be displayed to the user
