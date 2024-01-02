@@ -30,7 +30,7 @@ function ToDo({ todoData, deleteHandler }) {
     try {
       const options = {
         method: "PUT",
-        url: `http://localhost:3000/api/todos/${currentTodo._id}`,
+        url: `/api/todos/${currentTodo._id}`,
         data: newTodo,
       };
 
@@ -80,7 +80,7 @@ function ToDo({ todoData, deleteHandler }) {
     try {
       const options = {
         method: "PUT",
-        url: `http://localhost:3000/api/todos/${currentTodo._id}`,
+        url: `/api/todos/${currentTodo._id}`,
         data: newTodo,
       };
 

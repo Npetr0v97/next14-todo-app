@@ -33,7 +33,7 @@ export function ToDoList() {
 
       try {
         const response = await axios.request(options);
-
+        console.log(response.statusText);
         if (response.statusText !== "OK") {
           throw new Error("Failed to fetch Todos");
         }
@@ -63,7 +63,7 @@ export function ToDoList() {
     try {
       const postOptions = {
         method: "POST",
-        url: "http://localhost:3000/api/todos",
+        url: "/api/todos",
         data: newTodo,
       };
       const response = await axios.request(postOptions);
@@ -86,7 +86,7 @@ export function ToDoList() {
     try {
       const options = {
         method: "DELETE",
-        url: `http://localhost:3000/api/todos`,
+        url: `/api/todos`,
         params: {
           id,
         },
