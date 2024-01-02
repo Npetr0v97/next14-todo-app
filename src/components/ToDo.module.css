@@ -20,6 +20,7 @@
   font-size: 1rem;
   padding: 2px;
   transition: 1 ease;
+  color: white
 }
 .contentBlur {
   opacity: 0.8;
@@ -56,6 +57,17 @@
   box-shadow: 0 2px var(--primary);
 }
 
+
+
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-left: auto;
+  color: white;
+}
+
 .checkbox {
   margin-right: 8px;
 
@@ -66,16 +78,8 @@
   outline: none;
   cursor: pointer;
 }
-
 .checkbox:checked {
-  background-color: #555;
+  accent-color: var(--main-purple);
   border-color: #555;
 }
 
-.deleteButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-left: auto;
-}
