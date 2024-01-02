@@ -33,11 +33,12 @@ export function ToDoList() {
 
       try {
         const response = await axios.request(options);
-        console.log(response);
+
         if (response.status !== 200) {
           throw new Error("Failed to fetch Todos");
         }
         const todos = response.data.todos;
+
         // Set the state so the list can be displayed to the user
         setTodosArray([...todos]);
       } catch (error) {
