@@ -34,7 +34,7 @@ export function ToDoList() {
       try {
         const response = await axios.request(options);
         console.log(response);
-        if (response.statusText !== "OK") {
+        if (response.status !== 200) {
           throw new Error("Failed to fetch Todos");
         }
         const todos = response.data.todos;
