@@ -31,11 +31,6 @@ export function ToDoList() {
         signal,
       };
 
-      // const options = {
-      //   method: "GET",
-      //   url: "http://localhost:3000/api/todos",
-      //   signal,
-      // };
       try {
         const response = await axios.request(options);
 
