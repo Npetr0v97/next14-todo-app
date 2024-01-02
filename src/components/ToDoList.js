@@ -26,7 +26,7 @@ export function ToDoList() {
     async function getTodos() {
       const options = {
         method: "GET",
-        url: "/api/todos",
+        url: "https://next14-todo-app-jade.vercel.app/api/todos",
         signal,
       };
 
