@@ -3,6 +3,7 @@ import "./ToDoList.css";
 import ToDo from "./ToDo";
 import { useState } from "react";
 import axios from "axios";
+import useSWR from "swr";
 
 export function ToDoList() {
   // The state that will handle the input field
@@ -21,13 +22,13 @@ export function ToDoList() {
   // On mount fetch the list of all Todos from the Mongo database
   useEffect(() => {
     const controller = new AbortController();
-    const signal = controller.signal;
+    // const signal = controller.signal;
 
     async function getTodos() {
       const options = {
         method: "GET",
-        url: "https://next14-todo-app-jade.vercel.app/api/todos",
-        signal,
+        url: "/api/todos",
+        // signal,
       };
 
       // const options = {
@@ -36,12 +37,15 @@ export function ToDoList() {
       //   signal,
       // };
       try {
-        const response = await axios.request(options);
-
+        // const response = await axios.request(options);
+        const response = await fetch("/api/todos");
+        const data = await response.json();
+        console.log(data);
         if (response.statusText !== "OK") {
           throw new Error("Failed to fetch Todos");
         }
-        const todos = response.data.todos;
+        // const todos = response.data.todos;
+        const todos = data.todos;
         // Set the state so the list can be displayed to the user
         setTodosArray([...todos]);
       } catch (error) {
@@ -53,8 +57,7 @@ export function ToDoList() {
 
     return () => {
       // Cleanup function
-
-      controller.abort();
+      // controller.abort();
     };
   }, []);
 
