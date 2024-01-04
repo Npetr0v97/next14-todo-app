@@ -83,3 +83,11 @@
   border-color: #555;
 }
 
+@media screen and (max-width: 768px) {
+  .strWidth {
+    border-color: var(--secondary-purple);
+
+    width: 30%;
+    height: 2px;
+  }
+}

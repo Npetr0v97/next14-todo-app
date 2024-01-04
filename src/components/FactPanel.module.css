@@ -33,7 +33,7 @@
 @media screen and (max-width: 768px) {
   /* Minor adjustments for smaller screens */
   .mainDiv {
-    width: 450px;
+    width: 100%;
     height: 225px;
   }
 
@@ -44,6 +44,6 @@
 
   .content {
     padding: 0 40px;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 }

@@ -61,3 +61,11 @@
     box-shadow: none;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .form__field {
+    width: 100%;
+
+  }
+}
