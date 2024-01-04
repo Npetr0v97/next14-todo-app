@@ -3,7 +3,7 @@ import "./ToDoList.css";
 import ToDo from "./ToDo";
 import { useState } from "react";
 import axios from "axios";
-import useSWR from "swr";
+
 
 export function ToDoList() {
   // The state that will handle the input field

@@ -20,9 +20,9 @@ export default function Home() {
           <InfoPanel />
           <FactPanel />
         </Frame>
-        <Frame>
           <ToDoList />
-        </Frame>
+        {/* <Frame>
+        </Frame> */}
       </main>
     </Provider>
   );
