@@ -32,6 +32,7 @@
 .form__label {
   position: absolute;
   top: 0;
+  left: 15%;
   display: block;
   transition: 0.2s;
 
@@ -42,6 +43,7 @@
   ~ .form__label {
     position: absolute;
     top: 0;
+
     transform: translateY(-5px);
     display: block;
     transition: 0.2s;
@@ -63,10 +65,8 @@
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .form__field {
     width: 70%;
-
   }
 }
