@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: red;
+}
+
 @media screen and (max-width: 768px) {
   .main {
     margin: 0 auto;

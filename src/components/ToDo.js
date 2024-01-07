@@ -4,8 +4,9 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ToDo.module.css";
 import axios from "axios";
 import Label from "./Label";
+import { motion, AnimatePresence } from "framer-motion";
 
-function ToDo({ todoData, deleteHandler }) {
+function ToDo({ todoData, deleteHandler, itemCount }) {
   // The state handling the data for the Todo item
   const [currentTodo, setCurrentTodo] = useState({ ...todoData });
   // State the indicates whether the item is in edit more or not
@@ -14,6 +15,27 @@ function ToDo({ todoData, deleteHandler }) {
   const [todoText, setTodoText] = useState(todoData.content);
   // A ref that is used for focusing the input field
   const inputRef = useRef(null);
+
+  const fadeInAnimationVariants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: () => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.05 * itemCount,
+      },
+    }),
+    exit: {
+      x: -1000,
+      opacity: 0,
+      transition: {
+        type: "spring",
+      },
+    },
+  };
 
   async function checkboxChangeHandler() {
     // Declare a resolved date based on the item completion
@@ -102,7 +124,14 @@ function ToDo({ todoData, deleteHandler }) {
   }, [isEditing]);
 
   return (
-    <div className={styles.mainDiv}>
+    <motion.div
+      key={todoData._id}
+      className={styles.mainDiv}
+      variants={fadeInAnimationVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className={styles.secondaryDiv}>
         <input
           type="checkbox"
@@ -150,7 +179,7 @@ function ToDo({ todoData, deleteHandler }) {
       />
       {/* A resolved label that indicates how long ago the item was completed */}
       <Label resolved={currentTodo.resolved} />
-    </div>
+    </motion.div>
   );
 }
 
