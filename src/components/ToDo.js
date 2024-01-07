@@ -4,8 +4,28 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ToDo.module.css";
 import axios from "axios";
 import Label from "./Label";
+import { motion } from "framer-motion";
 
-function ToDo({ todoData, deleteHandler }) {
+function ToDo({ todoData, deleteHandler, itemCount }) {
+  // Creating the animations' configuration constant
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 * itemCount,
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -1000,
+    },
+  };
+
   // The state handling the data for the Todo item
   const [currentTodo, setCurrentTodo] = useState({ ...todoData });
   // State the indicates whether the item is in edit more or not
@@ -102,7 +122,15 @@ function ToDo({ todoData, deleteHandler }) {
   }, [isEditing]);
 
   return (
-    <div className={styles.mainDiv}>
+    // div replaced with motion.div plus the additional configurations for the effects
+    <motion.div
+      className={styles.mainDiv}
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      layout
+    >
       <div className={styles.secondaryDiv}>
         <input
           type="checkbox"
@@ -150,7 +178,7 @@ function ToDo({ todoData, deleteHandler }) {
       />
       {/* A resolved label that indicates how long ago the item was completed */}
       <Label resolved={currentTodo.resolved} />
-    </div>
+    </motion.div>
   );
 }
 

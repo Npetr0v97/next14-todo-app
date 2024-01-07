@@ -3,21 +3,14 @@ import "./ToDoList.css";
 import ToDo from "./ToDo";
 import { useState } from "react";
 import axios from "axios";
-
+import { AnimatePresence } from "framer-motion";
 
 export function ToDoList() {
   // The state that will handle the input field
   const [todoText, setTodoText] = useState("");
 
-  // The state that will handle the array on the frontend, prepopulated with a dummy item
-  const [todosArray, setTodosArray] = useState([
-    {
-      content: "Pending load...",
-      completed: false,
-      _id: "xxx",
-      resolved: null,
-    },
-  ]);
+  // The state that will handle the array on the frontend
+  const [todosArray, setTodosArray] = useState([]);
 
   // On mount fetch the list of all Todos from the Mongo database
   useEffect(() => {
@@ -130,15 +123,19 @@ export function ToDoList() {
       </form>
       <div>
         {/* Iterating over the todosArray in order to generate the items. Pass the delete handler function as a prop along with  the todo data for the respective item */}
-        {todosArray.map((todo) => {
-          return (
-            <ToDo
-              key={todo._id}
-              todoData={todo}
-              deleteHandler={deleteHandler}
-            />
-          );
-        })}
+        {/* Adding motion effects for the exit animation via AnimatePresence */}
+        <AnimatePresence>
+          {todosArray.map((todo, index) => {
+            return (
+              <ToDo
+                key={todo._id}
+                todoData={todo}
+                deleteHandler={deleteHandler}
+                itemCount={index}
+              />
+            );
+          })}
+        </AnimatePresence>
       </div>
     </div>
   );
