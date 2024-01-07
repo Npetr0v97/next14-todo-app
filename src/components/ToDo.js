@@ -35,27 +35,6 @@ function ToDo({ todoData, deleteHandler, itemCount }) {
   // A ref that is used for focusing the input field
   const inputRef = useRef(null);
 
-  const fadeInAnimationVariants = {
-    initial: {
-      opacity: 0,
-      y: 100,
-    },
-    animate: () => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.05 * itemCount,
-      },
-    }),
-    exit: {
-      x: -1000,
-      opacity: 0,
-      transition: {
-        type: "spring",
-      },
-    },
-  };
-
   async function checkboxChangeHandler() {
     // Declare a resolved date based on the item completion
     const resolved = !currentTodo.completed ? new Date() : null;
