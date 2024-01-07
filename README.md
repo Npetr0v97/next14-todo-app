@@ -2,6 +2,7 @@
 
 - HTML/CSS... obviously (CSS modules in particular)
 - ReactJS for the front end
+- Framer Motion for additional transition effects
 - NextJS - the framework helping with running the front end, back end and deployment. NextJS App Router used for the routing of the Todo API
 - Redux - used for state-managing part of the app. Mainly to show that I can work with it :)
 - MongoDB (plus Mongoose) - used for the Todo Database

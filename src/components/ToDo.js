@@ -4,9 +4,28 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ToDo.module.css";
 import axios from "axios";
 import Label from "./Label";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function ToDo({ todoData, deleteHandler, itemCount }) {
+  // Creating the animations' configuration constant
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 * itemCount,
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -1000,
+    },
+  };
+
   // The state handling the data for the Todo item
   const [currentTodo, setCurrentTodo] = useState({ ...todoData });
   // State the indicates whether the item is in edit more or not
@@ -124,13 +143,14 @@ function ToDo({ todoData, deleteHandler, itemCount }) {
   }, [isEditing]);
 
   return (
+    // div replaced with motion.div plus the additional configurations for the effects
     <motion.div
-      key={todoData._id}
       className={styles.mainDiv}
-      variants={fadeInAnimationVariants}
+      variants={variants}
       initial="initial"
       animate="animate"
       exit="exit"
+      layout
     >
       <div className={styles.secondaryDiv}>
         <input
