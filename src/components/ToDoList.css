@@ -28,6 +28,23 @@
   }
 }
 
+.toggle__text {
+  font-size: 0.85rem;
+  text-align: left;
+  margin-left: 17.5%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__text_off {
+}
+
+.toggle__text_on {
+  text-decoration: underline;
+  font-style: italic;
+  color: var(--pale-green);
+}
+
 /* This styles the label so thast when the form filed is focused, the "placeholder" text goes above the input field */
 .form__label {
   position: absolute;

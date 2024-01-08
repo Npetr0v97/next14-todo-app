@@ -60,7 +60,6 @@ function ToDo({ todoData, deleteHandler, itemCount }) {
       } else {
         // If everything is correct, update the current Todo state. Note that Mongo is configured to respond with the update item and NOT with the old value (which is the default behavior)
         setCurrentTodo({ ...response.data });
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);
@@ -128,8 +127,9 @@ function ToDo({ todoData, deleteHandler, itemCount }) {
       variants={variants}
       initial="initial"
       animate="animate"
-      exit="exit"
-      layout
+      // This animation bugs out...
+      // exit="exit"
+      // layout
     >
       <div className={styles.secondaryDiv}>
         <input

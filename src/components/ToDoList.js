@@ -4,6 +4,7 @@ import ToDo from "./ToDo";
 import { useState } from "react";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
+import { NUMBER_OF_MILLISECONDS_IN_A_DAY } from "../../utils/helperFunctions";
 
 export function ToDoList() {
   // The state that will handle the input field
@@ -11,6 +12,7 @@ export function ToDoList() {
 
   // The state that will handle the array on the frontend
   const [todosArray, setTodosArray] = useState([]);
+  const [isToggledOldResolved, setisToggledOldResolved] = useState(true);
 
   // On mount fetch the list of all Todos from the Mongo database
   useEffect(() => {
@@ -104,6 +106,44 @@ export function ToDoList() {
     setTodoText(event.target.value);
   }
 
+  function returnFullListOfTodos() {
+    return todosArray.map((todo, index) => {
+      return (
+        <ToDo
+          key={todo._id}
+          todoData={todo}
+          deleteHandler={deleteHandler}
+          itemCount={index}
+        />
+      );
+    });
+  }
+
+  function returnTodosWithoutOldItems() {
+    return todosArray
+      .filter((todo) => {
+        if (todo.resolved === null) {
+          return true;
+        } else {
+          return (
+            (new Date() - Date.parse(todo.resolved)) /
+              NUMBER_OF_MILLISECONDS_IN_A_DAY <
+            2
+          );
+        }
+      })
+      .map((todo, index) => {
+        return (
+          <ToDo
+            key={todo._id}
+            todoData={todo}
+            deleteHandler={deleteHandler}
+            itemCount={index}
+          />
+        );
+      });
+  }
+
   return (
     <div>
       <form onSubmit={submitHandler} className="form__group">
@@ -122,19 +162,22 @@ export function ToDoList() {
         </label>
       </form>
       <div>
+        <div
+          className={`toggle__text ${
+            isToggledOldResolved ? "toggle__text_off" : "toggle__text_on"
+          }`}
+          onClick={() => setisToggledOldResolved((prevState) => !prevState)}
+        >
+          {/* The toggle button that hides/shows old resolved items */}
+          {isToggledOldResolved ? "Hide" : "Show"} items that were resolved 2
+          days ago
+        </div>
         {/* Iterating over the todosArray in order to generate the items. Pass the delete handler function as a prop along with  the todo data for the respective item */}
         {/* Adding motion effects for the exit animation via AnimatePresence */}
         <AnimatePresence>
-          {todosArray.map((todo, index) => {
-            return (
-              <ToDo
-                key={todo._id}
-                todoData={todo}
-                deleteHandler={deleteHandler}
-                itemCount={index}
-              />
-            );
-          })}
+          {isToggledOldResolved
+            ? returnFullListOfTodos()
+            : returnTodosWithoutOldItems()}
         </AnimatePresence>
       </div>
     </div>

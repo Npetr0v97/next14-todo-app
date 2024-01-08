@@ -1,4 +1,4 @@
-
+export const NUMBER_OF_MILLISECONDS_IN_A_DAY = 86400000;
 
 // API returns the whote quote and the author so the following two functions split and extract the content and author
 export function extractContent(text) {
