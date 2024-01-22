@@ -38,3 +38,15 @@ export function itemCompletedBefore(timeInMilliseconds) {
 
   return result;
 }
+
+//Helper method that will transfer the date String into a real Date
+export function dateParser(dateString) {
+  const dateParts = dateString.split("-");
+  const year = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; //Dates are 0-based
+  const day = parseInt(dateParts[2], 10);
+
+  const convertedDate = new Date(year, month, day);
+
+  return convertedDate;
+}

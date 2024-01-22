@@ -4,6 +4,7 @@ const activitySchema = new Schema(
   {
     location: { type: String, required: true },
     distance: {type: Number, required: true},
+    elevationGain: {type: Number, required: true},
     date: {type: Date, required: false},
     activityType: {type: String, required: false}
   },
