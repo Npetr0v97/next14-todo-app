@@ -96,10 +96,9 @@
 }
 
 .child_div {
-  width: calc(50% - 10px); /* Adjust as needed for horizontal spacing */
-  margin-bottom: 20px; /* Adjust as needed for vertical spacing */
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
   box-sizing: border-box;
-  /* Additional styling for child divs */
 }
 .label {
   display: block;
@@ -153,4 +152,15 @@
 
 .radio_items {
   transform: translateY(2px);
+}
+
+@media screen and (max-width: 768px) {
+  .form_window {
+    height: 80%;
+  }
+
+  .child_div {
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+  }
 }
