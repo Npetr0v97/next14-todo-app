@@ -1,32 +1,30 @@
 "use client";
-import styles from "./page.module.css";
 import InfoPanel from "@/components/InfoPanel";
 import Frame from "@/components/wrappers/Frame";
 import ToDoList from "@/components/ToDoList.js";
 import FactPanel from "@/components/FactPanel";
+import Navbar from "@/components/Navbar";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import { Ubuntu } from "next/font/google";
-import { useState } from "react";
 
-// A different font... because why not
-const ubuntu = Ubuntu({ subsets: ["latin"], weight: "300" });
 
+
+//TODO
+// New page for activities
+// Generate a list of activities
+// Ability to add a new activitity
+// Have charts with metrics
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(true);
+
   return (
     // Providing the Redux store to the whole app by default, even though it is used only for the InfoPanel and FactPanel components
     <Provider store={store}>
-      <main className={`${styles.main} ${ubuntu.className}`}>
-
+        <Navbar/>
         <Frame>
           <InfoPanel />
           <FactPanel />
         </Frame>
         <ToDoList />
-        {/* <Frame>
-        </Frame> */}
-      </main>
     </Provider>
   );
 }
