@@ -30,6 +30,7 @@ function RunningTrackerForm() {
   };
 
   function submitHandler(e) {
+    //TODO modify the handler to create a new activity
     e.preventDefault();
     console.log(
       location,

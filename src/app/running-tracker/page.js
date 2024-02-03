@@ -30,7 +30,8 @@ export default function Home() {
       console.log(error);
     }
   }
-
+  //TODO add the list of activities (Just a mockup)
+  //TODO LATER -> edit an activity by popping up the same form with the prefilled activity data that needs to be editted, delete an activity
   return (
     <div>
       <Navbar />

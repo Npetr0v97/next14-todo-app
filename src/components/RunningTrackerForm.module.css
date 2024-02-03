@@ -111,9 +111,15 @@
   width: 80%;
   padding: 6px;
   margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px; /* Rounded edges */
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: white;
+  color: black;
   box-sizing: border-box;
+}
+
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* This will invert the color of the icon */
 }
 
 .submit_button {
