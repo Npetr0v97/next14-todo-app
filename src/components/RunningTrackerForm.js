@@ -3,8 +3,9 @@ import { faCirclePlus, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import styles from "./RunningTrackerForm.module.css";
 import { dateParser } from "../../utils/helperFunctions";
+import axios from "axios";
 
-function RunningTrackerForm() {
+function RunningTrackerForm({ updateActivityArray }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
@@ -29,23 +30,40 @@ function RunningTrackerForm() {
     setActivityType(event.target.value);
   };
 
-  function submitHandler(e) {
-    //TODO modify the handler to create a new activity
+  async function submitHandler(e) {
     e.preventDefault();
-    console.log(
-      location,
-      dateParser(date),
-      distance,
-      elevationGain,
-      activityType
-    );
-    setModalIsVisible(false);
-    setLocation("");
-    setDate("");
-    setDistance("");
-    setElevationGain("");
-    setActivityType("");
-    alert("Under construction. Stay tuned :)");
+    const newActivity = {
+      location: location,
+      distance: parseFloat(distance),
+      date: dateParser(date),
+      elevationGain: parseFloat(elevationGain),
+      activityType: activityType,
+    };
+
+    try {
+      const postOptions = {
+        method: "POST",
+        url: "/api/activities",
+        data: newActivity,
+      };
+      const response = await axios.request(postOptions);
+
+      if (response.status !== 201) {
+        throw new Error("Unable to create a new Todo");
+      } else {
+        const returnedActivity = response.data.response;
+        console.log(returnedActivity);
+        updateActivityArray((prevState) => [...prevState, returnedActivity]);
+        setModalIsVisible(false);
+        setLocation("");
+        setDate("");
+        setDistance("");
+        setElevationGain("");
+        setActivityType("");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

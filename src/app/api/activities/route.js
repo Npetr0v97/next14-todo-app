@@ -2,23 +2,16 @@ import { NextResponse } from "next/server";
 import connectMongoDB from "../../../../libs/mongodb";
 import Activity from "../../../../models/activity";
 
-export async function POST() {
-  // const { content } = await request.json();
+// Creating a new activity
+export async function POST(request) {
   await connectMongoDB();
+  const activity = await request.json();
 
-  // Defining the Todo. Content is coming from the user input. Completed and Resolved by default are false/empty
-  const todo = {
-    location: "Ruse",
-    distance: 20,
-    date: new Date(),
-    activityType: "Run",
-  };
-
-  const response = await Activity.create(todo);
+  const response = await Activity.create(activity);
   return NextResponse.json({ response }, { status: 201 });
 }
 
-// Geting the list of all Todos
+// Geting the list of all Activities
 export async function GET(request) {
   await connectMongoDB();
 
@@ -26,4 +19,9 @@ export async function GET(request) {
   return NextResponse.json({ activities }, { status: 200 });
 }
 
-//TODO create the post request and return the new activity
+// Delete all activities
+export async function DELETE() {
+  await connectMongoDB();
+  const response = await Activity.deleteMany();
+  return NextResponse.json({ response }, { status: 201 });
+}

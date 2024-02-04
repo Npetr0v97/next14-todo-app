@@ -2,26 +2,16 @@
 import Navbar from "@/components/Navbar";
 import RunningTrackerForm from "@/components/RunningTrackerForm";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import RunningList from "@/components/RunningList";
 export default function Home() {
-  async function clickHandler() {
-    console.log("Activity Created");
-    try {
-      const options = {
-        method: "POST",
-        url: "/api/activities",
-      };
-      const response = await axios.request(options);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [activityArray, setActivityArray] = useState([]);
 
-  async function clickHandler2() {
+  async function clickHandler() {
     console.log("Activities fetched");
     try {
       const options = {
-        method: "GET",
+        method: "DELETE",
         url: "/api/activities",
       };
       const response = await axios.request(options);
@@ -29,16 +19,37 @@ export default function Home() {
     } catch (error) {
       console.log(error);
     }
+
+    clickHandler2();
   }
-  //TODO add the list of activities (Just a mockup)
+
+  async function clickHandler2() {
+    console.log(activityArray);
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const options = {
+          method: "GET",
+          url: "/api/activities",
+        };
+        const response = await axios.request(options);
+        setActivityArray(response.data.activities);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   //TODO LATER -> edit an activity by popping up the same form with the prefilled activity data that needs to be editted, delete an activity
   return (
     <div>
       <Navbar />
-      <RunningTrackerForm />
-      <h1>In construction :)</h1>
-      <h2>...an imaginary map</h2>
-      <h2 onClick={clickHandler2}>...an imaginary list of activities</h2>
+      <RunningTrackerForm updateActivityArray={setActivityArray} />
+      <RunningList getActivityList={clickHandler2} />
     </div>
   );
 }
