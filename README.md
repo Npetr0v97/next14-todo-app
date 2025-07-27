@@ -15,6 +15,9 @@
 - Display a set of 3 Inspirational quotes and 3 Interesting facts
 - Both sets should be refreshed every day
 
+## App Deployed on...
+- https://next14-todo-app-tan.vercel.app/
+
 ## Contacts
 
 - nikolay.petrov.petrov.97@gmail.com
